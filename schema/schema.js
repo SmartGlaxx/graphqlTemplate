@@ -52,14 +52,16 @@ const UserType = new GraphQLObjectType({
             type : GraphQLList(HobbyType),
             resolve(parent, args){
                 //return _.filter(hobbiesData, {userId : parent.id})
-                return Hobby.find({})
+               let hobbyParams = {userId : parent.id}
+               return Hobby.find(hobbyParams)
             }
         },
         posts : {
             type : GraphQLList(PostType),
             resolve(parent, args){
                 //return _.filter(postsData, {userId : parent.id})
-                return Post.find({})
+                let postParams = {userId : parent.id}
+                return Post.find(postParams)
             }
         }
     })
